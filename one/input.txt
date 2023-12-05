@@ -1,4 +1,3 @@
-const input = `
 ninefourone1
 53sevenvvqm
 kscpjfdxp895foureightckjjl1
@@ -999,27 +998,3 @@ sevenssrzkspld2
 qnzcvcthrsgjlnzxmxlppjdpnine8seven7
 eight7xhvkrcr
 two2tdjdfbqtqxrs119r
-`;
-
-const total = input
-  .split('\n')
-  .map(line => line.trim(''))
-  .filter(line => line !== '')
-  .map(line => {
-    let first = null;
-    let second = null;
- 
-    for (let i = 0; i < line.length; i++) {
-      if (!isNaN(line[i])) {
-        if (first === null) {
-          first = parseInt(line[i]);
-        }
-        second = parseInt(line[i]);
-      }
-    }
-    
-    return parseInt(`${first}${second}`);
-  })
-  .reduce((a, b) => a + b);
-
-console.log(total);
