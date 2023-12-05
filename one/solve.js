@@ -3,59 +3,42 @@ const fs = require("fs");
 const input = fs.readFileSync('one/input.txt', 'utf-8');
 const example = fs.readFileSync('one/example.txt', 'utf-8');
 
-// Part one
-const calibrationTotal = input
-  .split('\n')
-  .map(line => {
-    const nums = [];
- 
-    for (const val of line) {
-      if (!isNaN(val)) {
-        nums.push(val);
-      }
-    }
-    
-    return parseInt(`${nums.at(0)}${nums.at(-1)}`);
-  })
-  .reduce((a, b) => a + b);
+const p1 = [];
+const p2 = [];
 
-console.log(`Part one: ${calibrationTotal}`);
-
-// Part two
-
-const numVals = {
-  zero: 0,
-  one: 1,
-  two: 2,
-  three: 3,
-  four: 4,
-  five: 5,
-  six: 6,
-  seven: 7,
-  eight: 8,
-  nine: 9
+const words = { 
+  zero: 0, 
+  one: 1, 
+  two: 2, 
+  three: 3, 
+  four: 4, 
+  five: 5, 
+  six: 6, 
+  seven: 7, 
+  eight: 8, 
+  nine: 9 
 }
 
-const actualCalibrationTotal = input
-  .split('\n')
-  .map(line => {
-    const nums = [];
- 
-    for (let i = 0; i < line.length; i++) {
-      if (!isNaN(line[i])) {
-        nums.push(line[i]);
-      }
+for (const line of input.split('\n')) {
+  const p1Nums = [];
+  const p2Nums = [];
 
-      for (const [key, val] of Object.entries(numVals)) {
-        if (line.substring(i).startsWith(key)) {
-          nums.push(val)
-        }
+  for (let i = 0; i < line.length; i++) {
+    if (!isNaN(line[i])) {
+      p1Nums.push(line[i]);
+      p2Nums.push(line[i]);
+    }
+
+    for (const [key, val] of Object.entries(words)) {
+      if (line.substring(i).startsWith(key)) {
+        p2Nums.push(val);
       }
     }
-    
-    return parseInt(`${nums.at(0)}${nums.at(-1)}`);
-  })
-  .reduce((a, b) => a + b);
+  }
 
+  p1.push(parseInt(`${p1Nums.at(0)}${p1Nums.at(-1)}`));
+  p2.push(parseInt(`${p2Nums.at(0)}${p2Nums.at(-1)}`));
+}
 
-console.log(`Part two: ${actualCalibrationTotal}`);
+console.log(`Part one: ${p1.reduce((a, b) => a + b)}`);
+console.log(`Part two: ${p2.reduce((a, b) => a + b)}`);
