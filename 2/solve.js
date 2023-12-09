@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-const input = fs.readFileSync('two/input.txt', 'utf-8');
-const example = fs.readFileSync('two/example.txt', 'utf-8');
+const input = fs.readFileSync('2/input.txt', 'utf-8');
+const example = fs.readFileSync('2/example.txt', 'utf-8');
 
 const p1 = [];
 const p2 = [];

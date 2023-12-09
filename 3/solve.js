@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-const input = fs.readFileSync('three/input.txt', 'utf-8');
-const example = fs.readFileSync('three/example.txt', 'utf-8');
+const input = fs.readFileSync('3/input.txt', 'utf-8');
+const example = fs.readFileSync('3/example.txt', 'utf-8');
 
 const lines = example.split('\n');
 const rows = lines.length;
